@@ -13,4 +13,5 @@ This bot is developed and maintained for free by a student (me!). It is entirely
 If you're enjoying the bot, please [vote, or leave a review.](https://top.gg/bot/526970299108032514)
 
 [Privacy policy](https://www.termsfeed.com/live/cd8410e3-7078-4bf7-8911-66e312a9861a)
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T6DW473)
