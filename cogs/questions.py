@@ -34,7 +34,7 @@ class QandA(commands.Cog):
         print(content)
             
         category = content["category"]
-        value = content["value"]
+        value = int(content["value"].replace('$', ''))
         question = self.HTMLtoMarkdown(content["question"])
         answer = self.HTMLtoMarkdown(content["answer"])
 
