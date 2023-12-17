@@ -24,6 +24,7 @@ class QandA(commands.Cog):
         s = s.replace('</i>', '*')
         s = s.replace('<b>', '**')
         s = s.replace('</b>', '**')
+        s = s.replace('<br />', '\n')
         return s
 
     @commands.slash_command(brief="Get a question." ,description="Get a question. Answer within 30 seconds.")
