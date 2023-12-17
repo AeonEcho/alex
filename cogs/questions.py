@@ -5,12 +5,19 @@ import collections
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 from discord.ext import commands
+import json
+import random
 
 class QandA(commands.Cog):
     scores = collections.defaultdict(int)
+    questions = collections.defaultdict(str)
 
     def __init__(self, client):
         self.client = client
+        j = ''
+        with open('200k_questions.json', 'r') as f:
+            j = f.read()
+        self.questions = json.loads(j)
 
     def HTMLtoMarkdown(self, s):
         s = s.replace('<i>', '*')
@@ -21,14 +28,11 @@ class QandA(commands.Cog):
 
     @commands.slash_command(brief="Get a question." ,description="Get a question. Answer within 30 seconds.")
     async def q(self, ctx):
-        URL = "http://jservice.io/api/random"
-        r = requests.get(url=URL)
-        content = r.json()[0]
-        while len(content["answer"]) == 0 or len(content["question"]) == 0:
-            r = requests.get(url=URL)
-            content = r.json()[0]
+        #get random question
+        content = self.questions[random.randint(0, len(self.questions)-1)]
+        print(content)
             
-        category = content["category"]["title"]
+        category = content["category"]
         value = content["value"]
         question = self.HTMLtoMarkdown(content["question"])
         answer = self.HTMLtoMarkdown(content["answer"])
